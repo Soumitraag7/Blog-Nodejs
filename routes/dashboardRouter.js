@@ -8,15 +8,16 @@ const {
   postEditProfileController,
 } = require("../controllers/dashboardController");
 const { isAthencated } = require("../middlewares/authMiddleware");
+const profileCreteValidator = require('../validators/profileCreateValidator')
 
   
 
 router.get("/", isAthencated, getDashboardController);
 
-router.get("/create-Profile",getCreateProfileController);
-router.get("/create-Profile",postCreateProfileController);
+router.get("/create-Profile",isAthencated,getCreateProfileController);
+router.post("/create-Profile",isAthencated,profileCreteValidator,postCreateProfileController);
 
-router.get("/edit-Profile",getEditProfileController);
-router.get("/edit-Profile",postEditProfileController);
+router.get("/edit-Profile",isAthencated,getEditProfileController);
+router.get("/edit-Profile",isAthencated,postEditProfileController);
 
 module.exports = router;

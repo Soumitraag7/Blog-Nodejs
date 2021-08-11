@@ -6,9 +6,20 @@ const profileSchema = new Schema({
         ref: 'User',
         required: true
     },
+    name: {
+        type:String,
+        trim:true,
+        required: true
+    },
     bio: {
         type:String,
         trim:true,
+        required: true
+    },
+    title:{
+        type:String,
+        trim:true,
+        required: true
     },
     profilePics:String,
     links:{

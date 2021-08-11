@@ -44,29 +44,33 @@
 
                                     </form>
                                 </div>
-                                <form action="/dashboard/create-Profile" method="post">
+                                <form action="/dashboard/create-Profile" method="POST">
                                     <div class="form-group">
                                         <div class="input-group  ">
                                             <div class="input-group-prepend"><i class="fas fa-user"></i></div>
                                             <input 
-                                               class="form-control" 
+                                               class="form-control <%= error.name ? 'is-invalid' : ''%>" 
                                                id="name" 
                                                name="name" 
                                                type="text"
                                                placeholder="Enter your Name" 
                                                autocomplete="off">
+                                               <div class="invalid-feedback d-block ">
+                                                   <%= error.name && error.name%>
+                                               </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group  ">
                                             <div class="input-group-prepend"><i class="fas fa-envelope"></i></div>
                                             <input 
-                                               class="form-control" 
-                                               id="name" name="name" 
+                                               class="form-control " 
+                                               id="name" name="email" 
                                                type="text"
                                                value="<%= user.email %>" 
                                                disable
                                                >
+                                               
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -74,25 +78,31 @@
                                             <div class="input-group-prepend"><i class="fas fa-file-signature"></i></i>
                                             </div>
                                             <input
-                                                class="form-control " 
+                                                class="form-control <%= error.bio ? 'is-invalid' : ''%> " 
                                                 id="name" 
-                                                name="name" 
+                                                name="bio"  
                                                 type="text"
                                                 placeholder="Enter your Boi" 
                                                 autocomplete="off"
                                                 >
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.bio && error.bio%>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group  ">
                                             <div class="input-group-prepend"><i class="fas fa-address-card"></i></div>
                                             <input 
-                                                class="form-control" 
+                                                class="form-control <%= error.title ? 'is-invalid' : ''%>" 
                                                 id="name" 
-                                                name="name" 
+                                                name="title" 
                                                 type="text"
                                                 placeholder="Enter your title" 
                                                 autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.title && error.title%>
+                                                </div>
                                         </div>
                                     </div>
                                     <h2 style="color: #fff" class="my-5">Your social links</h2>
@@ -101,24 +111,30 @@
                                             <div class="input-group-prepend"><i class="fas fa-globe"
                                                     style="color:rgba(255, 255, 255, 0.644)"></i>></i></div>
                                             <input 
-                                                class="form-control" 
+                                                class="form-control <%= error.website ? 'is-invalid' : ''%>" 
                                                 id="name" 
-                                                name="name" 
+                                                name="website" 
                                                 type="text"
                                                 placeholder="Enter your website link" 
                                                 autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.website && error.website%>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group  ">
                                             <div class="input-group-prepend"><i class="fab fa-facebook-f" style="color:#0D8CF0 "></i></div>
                                             <input 
-                                                class="form-control  " 
+                                                class="form-control <%= error.facebook ? 'is-invalid' : ''%> " 
                                                 id="name" 
-                                                name="name" 
+                                                name="facebook" 
                                                 type="text"
                                                 placeholder="Enter your facebook link" 
                                                 autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.facebook && error.facebook%>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -126,12 +142,15 @@
                                             <div class="input-group-prepend"><i class="fab fa-youtube"
                                                     style="color:red"></i></div>
                                             <input 
-                                                class="form-control  " 
+                                                class="form-control <%= error.youtube ? 'is-invalid' : ''%> " 
                                                 id="name" 
-                                                name="name" 
+                                                name="youtube" 
                                                 type="text"
                                                 placeholder="Enter your youtube link" 
                                                 autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.youtube && error.youtube%>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -139,14 +158,18 @@
                                             <div class="input-group-prepend"><i class="fab fa-github"
                                                     style="color:rgb(255, 255, 255)"></i></div>
                                             <input 
-                                                class="form-control  " 
+                                                class="form-control <%= error.github ? 'is-invalid' : ''%> " 
                                                 id="name" 
-                                                name="name" 
+                                                name="github" 
                                                 type="text"
                                                 placeholder="Enter your github link" 
                                                 autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.github && error.github%>
+                                                </div>
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">submit</button>
                                 </form>
                             </div>
                         </div>
@@ -169,6 +192,7 @@
             method: 'DELETE',
         })
         //  console.log(data);
+        location.reload()
          
     })
 

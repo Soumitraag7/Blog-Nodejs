@@ -20,7 +20,9 @@ exports.profilePicUpoloadController = async (req, res, next) => {
           {_id: req.user._id},
           {$set: { profilePics }}
       )
-      res.status(200).send(profilePics)
+    //   res.status(200).send(profilePics)
+    res.redirect("/dashboard/create-Profile");
+
     
 
     } catch (error) {
