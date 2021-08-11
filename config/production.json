@@ -1,0 +1,7 @@
+{
+    "host": "localhost prod",
+    "port": "process.env.PORT",
+    "dbName": "customers",
+    "name": "production",
+    "hostname": "LM"
+}

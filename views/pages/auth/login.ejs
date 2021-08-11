@@ -1,0 +1,51 @@
+<%- include('../../partials/header.ejs') %>
+<main class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 user-message">
+                <span class="splash-message text-right">Hello!<br> is good to<br> see you again</span>
+                <span class="alternative-message text-right">Don't have an account? <a href="/auth/signup">Sign Up</a></span>
+            </div>
+            <div class="col col-md-6 form-message">
+                <h3 class="logo mb-4 text-center">Logo</h3>
+                <span class="splash-description text-center mt-5 mb-5">Login to your account</span>
+                <form method="POST" action="/auth/login">
+                    <div class="form-group">
+                      <div class="input-group <%= error.email ? 'input-group-error' : '' %> ">
+                        <div class="input-group-prepend"><i class="fas fa-user"></i></div>
+                        <input class="form-control" id="email" name="email" type="text" placeholder="Username" autocomplete="off">
+                      </div>
+                      <div class="invalid-feedback d-block" style="color: red; font-size:20px">
+                        <%= error.email && error.email %> 
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group <%= error.password ? 'input-group-error' : '' %> ">
+                        <div class="input-group-prepend"><i class="fas fa-lock"></i></div>
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                      </div>
+                      <div class="invalid-feedback d-block" style="color: red; font-size:20px">
+                        <%= error.password && error.password %> 
+                      </div>
+                    </div>
+                    <div class="form-group login-submit"><button class="btn submit">Sign In</button></div>
+                    <div class="form-group row login-tools">
+                      <div class="col-sm-6 login-remember">
+                        <label class="mt-2">
+                          <input class="control-check" type="checkbox">
+                          <span class="check-label">Remember me</span>
+                        </label>
+                      </div>
+                      <div class="col-sm-6 pt-2 text-sm-right login-forgot-password"><a href="#">Forgot Password?</a></div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</main> 
+
+<%- include('../../partials/footer.ejs') %>
+
+
+</body>
+</html>

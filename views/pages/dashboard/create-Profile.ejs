@@ -1,0 +1,179 @@
+<%- include('../../partials/header.ejs') %>
+<main class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card card-body my-5">
+                    <h4>sidebar</h4>
+                </div>
+            </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="card card-body my-5" style="background-color: #363636;">
+                                <div>
+                                    <h2 style="text-align: center; color:#fff"><%= title %> </h2>
+                                </div>
+                                <div class="profile-pics">
+                                    <img 
+                                       src="<%= user.profilePics %> " 
+                                       alt="profile picture" id="profilePics"
+                                       class="w-25 h-25 rounded-circle"
+                                       
+                                       
+                                       >
+                                    <form action='/uploads/profilePic' class="my-2 font-color " id="profilePicsForm" method="POST" enctype="multipart/form-data">
+
+                                        <input 
+                                            type="file" 
+                                            name="profilePics" 
+                                            accept="image/*" 
+                                            value="upload"
+                                            id = "profilePicsFile"
+                                            >
+                                          <button  type="Submit" class="btn btn-primary">Submit</button>
+
+                                        <input 
+                                           type="button"
+                                           value="Remove Pics" 
+                                           id="removeRrofilePics"
+                                           style="display: <%=user.profilePics.includes('default.png')?'none':'block'%>"
+                                           class="btn btn-danger my-5">
+
+
+                                    </form>
+                                </div>
+                                <form action="/dashboard/create-Profile" method="post">
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-user"></i></div>
+                                            <input 
+                                               class="form-control" 
+                                               id="name" 
+                                               name="name" 
+                                               type="text"
+                                               placeholder="Enter your Name" 
+                                               autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-envelope"></i></div>
+                                            <input 
+                                               class="form-control" 
+                                               id="name" name="name" 
+                                               type="text"
+                                               value="<%= user.email %>" 
+                                               disable
+                                               >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-file-signature"></i></i>
+                                            </div>
+                                            <input
+                                                class="form-control " 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your Boi" 
+                                                autocomplete="off"
+                                                >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-address-card"></i></div>
+                                            <input 
+                                                class="form-control" 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your title" 
+                                                autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <h2 style="color: #fff" class="my-5">Your social links</h2>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-globe"
+                                                    style="color:rgba(255, 255, 255, 0.644)"></i>></i></div>
+                                            <input 
+                                                class="form-control" 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your website link" 
+                                                autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-facebook-f" style="color:#0D8CF0 "></i></div>
+                                            <input 
+                                                class="form-control  " 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your facebook link" 
+                                                autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-youtube"
+                                                    style="color:red"></i></div>
+                                            <input 
+                                                class="form-control  " 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your youtube link" 
+                                                autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-github"
+                                                    style="color:rgb(255, 255, 255)"></i></div>
+                                            <input 
+                                                class="form-control  " 
+                                                id="name" 
+                                                name="name" 
+                                                type="text"
+                                                placeholder="Enter your github link" 
+                                                autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+  
+  
+
+
+<%- include('../../partials/footer.ejs') %>
+
+<script>
+    let removeRrofilePics = document.getElementById('removeRrofilePics')
+    removeRrofilePics.addEventListener('click',async ()=>{
+      let data = await fetch('http://localhost:3000/uploads/profilePic',{
+            method: 'DELETE',
+        })
+        //  console.log(data);
+         
+    })
+
+</script>
+
+</body>
+
+</html>
