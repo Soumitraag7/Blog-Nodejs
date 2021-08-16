@@ -10,6 +10,7 @@ exports.profilePicUpoloadController = async (req, res, next) => {
     try {
       let profile = await Profile.findOne({ user: req.user._id });
       let profilePics = `/uploads/${req.file.filename}`
+      let oldProfile = profile.profilePics
       if (profile) {
           await Profile.findOneAndUpdate(
               {user: req.user._id},
@@ -20,6 +21,12 @@ exports.profilePicUpoloadController = async (req, res, next) => {
           {_id: req.user._id},
           {$set: { profilePics }}
       )
+      if(oldProfile !== '/uploads/default.png'){
+          fs.unlink(`public/${oldProfile}`,err=>{
+                if(err)console.log(err);
+          })
+      }
+
     //   res.status(200).send(profilePics)
     res.redirect("/dashboard/create-Profile");
 
@@ -37,7 +44,7 @@ exports.profilePicUpoloadController = async (req, res, next) => {
 };
 
 
-exports.deleteProfilePic = (req,res,next) =>{
+exports.deleteProfilePic = (req,res,next) =>{ 
     try {
         let defaulProfile = '/uploads/default.png'
         let currentProfile = req.user.profilePics

@@ -26,7 +26,7 @@ exports.getCreateProfileController = async (req, res, next) => {
       return res.redirect("/dashboard/edit-Profile");
     } else {
       return res.render("pages/dashboard/create-Profile", {
-        title: "Dashboard",
+        title: "Create profile page",
         flashMessage: Flash.getMessage(req),
         error: {}
 
@@ -95,14 +95,63 @@ exports.postCreateProfileController =async (req, res, next) => {
     }
 }
 
-exports.getEditProfileController =(req,res,next) => {
-    res.render("pages/dashboard/edit-Profile", {
-        title: "Dashboard",
-        flashMessage: Flash.getMessage(req),
-      });
+exports.getEditProfileController = async(req,res,next) => {
+    
+    try {
+      let profile = await Profile.findOne({user:req.user._id})
+      if(!profile){
+        return res.redirect('/dashboard/create-Profile');
+      }else{
+          return  res.render("pages/dashboard/edit-Profile", {
+            title: "Edit profile page",
+            flashMessage: Flash.getMessage(req),
+            error:{},
+            profile
+          });
+      }
+      
+    } catch (error) {
+      next(error);
+      
+    }
+    
 }
 
 
-exports.postEditProfileController =(req,res,next) => {
-    console.log('postEditProfileController');
+exports.postEditProfileController =async(req,res,next) => {
+  let {name,bio,title,website,facebook,youtube,github} = req.body
+  let profile= {
+    name,
+    bio,
+    title,
+    links:{
+      website:website || '',
+      facebook:facebook || '',
+      youtube:youtube || '',
+      github:github || '',
+    }
+  }
+
+  let errors = validationResult(req).formatWith(error => error.msg)
+    if(!errors.isEmpty()) {
+      return res.render("pages/dashboard/edit-Profile",{
+        title: "create profile page",
+        flashMessage: Flash.getMessage(req),
+        error: errors.mapped(),
+        profile
+      })
+    }
+    console.log(profile);
+    await Profile.findOneAndUpdate(
+      {user:req.user._id},
+      {$set:profile}
+    )
+    req.flash('success','Profile Updated successfully')
+    return res.render("pages/dashboard/edit-Profile",{
+      title: "create profile page",
+      flashMessage: Flash.getMessage(req),
+      error: errors.mapped(),
+      profile
+    })
+    
 }

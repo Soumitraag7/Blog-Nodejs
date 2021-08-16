@@ -18,6 +18,6 @@ router.get("/create-Profile",isAthencated,getCreateProfileController);
 router.post("/create-Profile",isAthencated,profileCreteValidator,postCreateProfileController);
 
 router.get("/edit-Profile",isAthencated,getEditProfileController);
-router.get("/edit-Profile",isAthencated,postEditProfileController);
+router.post("/edit-Profile",isAthencated,profileCreteValidator,postEditProfileController);
 
 module.exports = router;

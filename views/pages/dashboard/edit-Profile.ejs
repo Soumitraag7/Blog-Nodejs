@@ -1,13 +1,210 @@
 <%- include('../../partials/header.ejs') %>
 <main class="main-content">
-    <div class="container my-container">
-       <h1>Welcome to edit profile</h1>
-       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, eum quibusdam rerum, ratione laboriosam labore doloribus reiciendis mollitia impedit pariatur in deserunt sed dignissimos unde. Sunt ducimus tenetur laborum excepturi voluptatum autem, sapiente deserunt aspernatur esse, praesentium voluptatibus repudiandae assumenda quam molestias iusto voluptate consequuntur rem, perspiciatis quasi maxime odio?</p>
-    </div>
-</main> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card card-body my-5">
+                    <h4>sidebar</h4>
+                </div>
+            </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="card card-body my-5" style="background-color: #363636;">
+                                <div>
+                                    <h2 style="text-align: center; color:#fff"><%= title %> </h2>
+                                </div>
+                                <div class="profile-pics">
+                                    <img 
+                                       src="<%= user.profilePics %> " 
+                                       alt="profile picture" id="profilePics"
+                                       class="w-25 h-25 rounded-circle"
+                                       
+                                       
+                                       >
+                                    <form action='/uploads/profilePic' class="my-2 font-color " id="profilePicsForm" method="POST" enctype="multipart/form-data">
+
+                                        <input 
+                                            type="file" 
+                                            name="profilePics" 
+                                            accept="image/*" 
+                                            value="upload"
+                                            id = "profilePicsFile"
+                                            >
+                                          <button  type="Submit" class="btn btn-primary">Submit</button>
+
+                                        <input 
+                                           type="button"
+                                           value="Remove Pics" 
+                                           id="removeRrofilePics"
+                                           style="display: <%=user.profilePics.includes('default.png')?'none':'block'%>"
+                                           class="btn btn-danger my-5">
+
+
+                                    </form>
+                                </div>
+                                <form action="/dashboard/edit-Profile" method="POST">
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-user"></i></div>
+                                            <input 
+                                               class="form-control <%= error.name ? 'is-invalid' : ''%>" 
+                                               id="name" 
+                                               name="name" 
+                                               value="<%= profile.name %>"
+                                               type="text"
+                                               placeholder="Enter your Name" 
+                                               autocomplete="off">
+                                               <div class="invalid-feedback d-block ">
+                                                   <%= error.name && error.name%>
+                                               </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-envelope"></i></div>
+                                            <input 
+                                               class="form-control " 
+                                               id="name" name="email" 
+                                               type="text"
+                                               value="<%= user.email %>" 
+                                               disable
+                                               >
+                                               
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-file-signature"></i></i>
+                                            </div>
+                                            <input
+                                                class="form-control <%= error.bio ? 'is-invalid' : ''%> " 
+                                                id="name" 
+                                                name="bio"  
+                                                value="<%= profile.bio %>" 
+                                                type="text"
+                                                placeholder="Enter your Boi" 
+                                                autocomplete="off"
+                                                >
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.bio && error.bio%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-address-card"></i></div>
+                                            <input 
+                                                class="form-control <%= error.title ? 'is-invalid' : ''%>" 
+                                                id="name" 
+                                                name="title"
+                                                value="<%= profile.title %>" 
+                                                type="text"
+                                                placeholder="Enter your title" 
+                                                autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.title && error.title%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <h2 style="color: #fff" class="my-5">Your social links</h2>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fas fa-globe"
+                                                    style="color:rgba(255, 255, 255, 0.644)"></i>></i></div>
+                                            <input 
+                                                class="form-control <%= error.website ? 'is-invalid' : ''%>" 
+                                                id="name" 
+                                                name="website" 
+                                                value="<%= profile.links.website %>" 
+                                                type="text"
+                                                placeholder="Enter your website link" 
+                                                autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.website && error.website%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-facebook-f" style="color:#0D8CF0 "></i></div>
+                                            <input 
+                                                class="form-control <%= error.facebook ? 'is-invalid' : ''%> " 
+                                                id="name" 
+                                                name="facebook" 
+                                                value="<%= profile.links.facebook %>" 
+                                                type="text"
+                                                placeholder="Enter your facebook link" 
+                                                autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.facebook && error.facebook%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-youtube"
+                                                    style="color:red"></i></div>
+                                            <input 
+                                                class="form-control <%= error.youtube ? 'is-invalid' : ''%> " 
+                                                id="name" 
+                                                name="youtube" 
+                                                value="<%= profile.links.youtube %>" 
+                                                type="text"
+                                                placeholder="Enter your youtube link" 
+                                                autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.youtube && error.youtube%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group  ">
+                                            <div class="input-group-prepend"><i class="fab fa-github"
+                                                    style="color:rgb(255, 255, 255)"></i></div>
+                                            <input 
+                                                class="form-control <%= error.github ? 'is-invalid' : ''%> " 
+                                                id="name" 
+                                                name="github" 
+                                                value="<%= profile.links.github %>"
+                                                type="text"
+                                                placeholder="Enter your github link" 
+                                                autocomplete="off">
+                                                <div class="invalid-feedback d-block ">
+                                                    <%= error.github && error.github%>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+  
+  
+
 
 <%- include('../../partials/footer.ejs') %>
 
+<script>
+    let removeRrofilePics = document.getElementById('removeRrofilePics')
+    removeRrofilePics.addEventListener('click',async ()=>{
+      let data = await fetch('http://localhost:3000/uploads/profilePic',{
+            method: 'DELETE',
+        })
+        //  console.log(data);
+        location.reload()
+         
+    })
+
+</script>
 
 </body>
+
 </html>
