@@ -1,3 +1,5 @@
+const {validationResult} = require('express-validator');
+
 const Flash = require("../utils/Flash");
 
 exports.getCreatePostController = (req, res, next) => {
@@ -9,5 +11,10 @@ exports.getCreatePostController = (req, res, next) => {
       });
 }
 exports.postCreatePostController = (req, res, next) => {
-    res.send('postController')
+    console.log(req.body);
+
+    let error = validationResult(req).formatWith(error => error.msg);
+    console.log(error.mapped());
+    
+    
 }
