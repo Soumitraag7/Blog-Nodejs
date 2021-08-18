@@ -8,8 +8,8 @@ const {isAthencated} = require('../middlewares/authMiddleware')
 
 
 
-router.post('/profilePic',upload.single('profilePics'),profilePicUpoloadController);
-router.delete('/profilePic',deleteProfilePic)
+router.post('/profilePic',isAthencated,upload.single('profilePics'),profilePicUpoloadController);
+router.delete('/profilePic',isAthencated,deleteProfilePic)
 
 
 

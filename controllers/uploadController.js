@@ -10,7 +10,7 @@ exports.profilePicUpoloadController = async (req, res, next) => {
     try {
       let profile = await Profile.findOne({ user: req.user._id });
       let profilePics = `/uploads/${req.file.filename}`
-      let oldProfile = profile.profilePics
+      let oldProfile = req.user.profilePics
       if (profile) {
           await Profile.findOneAndUpdate(
               {user: req.user._id},

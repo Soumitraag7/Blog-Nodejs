@@ -6,6 +6,7 @@ const User = require('../models/User');
 exports.getDashboardController = async (req, res, next) => {
   try {
     let profile = await Profile.findOne({ user: req.user._id });
+    console.log(profile);
     if (profile) {
       return res.render("pages/dashboard/dashboard", {
         title: "Dashboard",
