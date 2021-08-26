@@ -14,20 +14,24 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
+    tags:{
+        type:[String],
+        required: true,
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    image: [{
-        type: String,
-    }],
+    // image: [{
+    //     type: String,
+    // }],
     thumbnail: String,
     readtime: String,
-    comments: {
+    comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comments',
-    },
+    }],
     likes: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
