@@ -1,10 +1,48 @@
 <%- include('../../partials/header.ejs') %>
 <main class="main-content">
-    <div class="container my-container">
-       <h1>Welcome to Dashboard</h1>
-       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, eum quibusdam rerum, ratione laboriosam labore doloribus reiciendis mollitia impedit pariatur in deserunt sed dignissimos unde. Sunt ducimus tenetur laborum excepturi voluptatum autem, sapiente deserunt aspernatur esse, praesentium voluptatibus repudiandae assumenda quam molestias iusto voluptate consequuntur rem, perspiciatis quasi maxime odio?</p>
-    </div>
-</main> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card card-body my-5">
+                    <%- include('../../partials/sidebar.ejs') %> 
+                </div>
+            </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="card card-body my-5" >
+                                <div>
+                                    <h2 style="text-align: center; color:#fff">Dashboard </h2>
+                                </div>
+                                <main class="main-content">
+                                    <div class="container my-container">
+                                       <h1>Welcome to Dashboard</h1>
+                                       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, eum quibusdam rerum, ratione laboriosam labore doloribus reiciendis mollitia impedit pariatur in deserunt sed dignissimos unde. Sunt ducimus tenetur laborum excepturi voluptatum autem, sapiente deserunt aspernatur esse, praesentium voluptatibus repudiandae assumenda quam molestias iusto voluptate consequuntur rem, perspiciatis quasi maxime odio?</p>
+                                    </div>
+                                </main> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+  
+  
+
+
+
+
+
+  </script>
+</body>
+
+</html>
+
+
+
+
 
 <%- include('../../partials/footer.ejs') %>
 

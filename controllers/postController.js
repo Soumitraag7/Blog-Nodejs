@@ -139,3 +139,50 @@ exports.editPostController = async (req, res, next) => {
     next(error);
   }
 };
+
+
+exports.deletGetPostController = async (req, res, next)=>{
+  let postId = req.params.id
+  
+  try {
+
+    let post  = await Post.findOne({author:req.user._id, _id: postId})
+    console.log(postId);
+    if(!post){
+      let error = new Error('404 page not found')
+      error.status = 404
+      throw error
+    }
+     console.log(postId);
+    await Post.findOneAndDelete({_id:postId})
+    await Profile.findOneAndUpdate(
+      {user: req.user._id},
+      {$pull:{post:postId}}
+    )
+    req.flash('success','Post delelte successefully')
+    res.redirect('/post');
+    
+  } catch (error) {
+    next(error)
+  }
+
+
+}
+
+exports.postsGetController = async (req, res, next) => {
+  console.log('here');
+        try {
+          let posts = await Post.find({author: req.user._id}) 
+          console.log(posts);
+          res.render('pages/dashboard/posts',{
+            title: 'My created post ',
+            posts,
+            flashMessage: Flash.getMessage(req),
+          })
+          
+        } catch (error) {
+
+          next(error)
+          
+        }
+}
