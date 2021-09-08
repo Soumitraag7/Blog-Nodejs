@@ -66,7 +66,7 @@ exports.postCreatePostController = async (req, res, next) => {
   }
 };
 
-exports.editPostController = async (req, res, next) => {
+exports.editGetController =async (req, res, next) => {
   let postId = req.params.id;
   try {
     let post = await Post.findOne({ author: req.user._id, _id: postId });
@@ -82,7 +82,59 @@ exports.editPostController = async (req, res, next) => {
       flashMessage: Flash.getMessage(req),
       post,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.editPostController = async (req, res, next) => {
+  let postId = req.params.id;
+  let {title,body,tags} = req.body;
+  try {
+    let post = await Post.findOne({ author: req.user._id, _id: postId });
+
+    if (!post) {
+      let error = new Error("404 page not found");
+      error.status = 404;
+      throw new Error();
+    }
+   
+    let error = validationResult(req).formatWith((error) => error.msg);
+
+    if (!error.isEmpty()) {
+      return res.render("pages/post/editPost", {
+        title: "edit post",
+        flashMessage: Flash.getMessage(req),
+        error: error.mapped(),
+        post,
+      });
+    }
+
+    if (tags) {
+      tags = tags.split(",").map((item) => item.trim());
+    }
+    
     console.log(post.thumbnail);
+    
+    let thumbnail = (req.file)? `/uploads/${req.file.filename}` : post.thumbnail;
+    
+    let editepost = await Post.findOneAndUpdate(
+      { _id: post._id },
+      {
+        $set: {
+          title,
+          body,
+          tags,
+          thumbnail,
+        },
+       
+      },
+      {new:true}
+    );
+
+    // console.log(post.thumbnail);
+    res.redirect(`/post/edit/${editepost._id}`);
+
   } catch (error) {
     next(error);
   }

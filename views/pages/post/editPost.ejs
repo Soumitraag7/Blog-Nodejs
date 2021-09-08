@@ -16,7 +16,7 @@
                                     <h2 style="text-align: center; color:#fff"><%= title %> </h2>
                                 </div>
                                 <div >
-                                    <form action="/post/create" method="POST" enctype="multipart/form-data">
+                                    <form action="/post/edit/<%=post._id %>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label style="color: #fff" for="title">Enter your post title</label>
                                         <input style="background-color: #fff; color:black" type="text" id="title" placeholder="enter your post title" name="title" class="form-control" value="<%= post.title %>">

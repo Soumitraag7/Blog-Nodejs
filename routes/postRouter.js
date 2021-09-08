@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   getCreatePostController,
   postCreatePostController,
+  editGetController,
   editPostController,
 } = require("../controllers/postController");
 const { isAthencated } = require("../middlewares/authMiddleware");
@@ -17,7 +18,7 @@ router.post(
   postCreatePostController
 );
 
-router.get('/edit/:id',isAthencated,editPostController)
-// router.post('/edit',isAthencated,editePostController)
+router.get('/edit/:id',isAthencated,editGetController)
+router.post('/edit/:id',isAthencated,upload.single("thumbnail"),postValidator,editPostController)
 
 module.exports = router;
