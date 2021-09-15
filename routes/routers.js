@@ -3,6 +3,7 @@ const dashboardRouter = require('./dashboardRouter')
 const playgroundRouter = require('../playground/validator')
 const uploadRouter = require('./uploadRouter')
 const postRouter = require('./postRouter')
+const commentsRouter = require('../api/routers/commentsRouter')
 
 
 console.log();
@@ -26,6 +27,10 @@ const routers = [
     {
         path:'/post',
         handler:postRouter
+    },
+    {
+        path:'/api',
+        handler:commentsRouter
     }
     ,{
         path:"/",
