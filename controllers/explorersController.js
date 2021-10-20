@@ -13,10 +13,10 @@ exports.explorerGetController = async (req, res, next) => {
         let filterObject ={}
         let order =1;
 
-        switch(filter){
+        switch(filter){ 
             case 'week':{
                 filterObject ={
-                    createAt:{
+                    createdAt:{
                         $gt:genDate(7)
                     }
                 }
@@ -25,7 +25,7 @@ exports.explorerGetController = async (req, res, next) => {
             }
             case 'month':{
                 filterObject ={
-                    createAt:{
+                    createdAt:{
                         $gt:genDate(30)
                     }
                 }
@@ -38,6 +38,7 @@ exports.explorerGetController = async (req, res, next) => {
             }
 
         }
+
         return {
             filterObject,
             order
@@ -48,11 +49,13 @@ exports.explorerGetController = async (req, res, next) => {
     try {
         let  filter  = req.query.filter || 'latest'
         console.log(filter);
-        let {filterObject,order} = genereteFilterObject(filter.toLowerCase())
-        console.log(filterObject);
+        let {order,filterObject} = genereteFilterObject(filter.toLowerCase())
+        console.log(filterObject,order);
+
         let allPost = await Post.find(filterObject)
-        .sort(order === 1? '-createAt': 'createAt')
+        .sort(order === 1? '-createdAt': 'createdAt')
          .populate('author','name')
+
          console.log(allPost);
         res.render('pages/explorers/explorers', {
             title: 'Explore All post',
