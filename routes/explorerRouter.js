@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { explorerGetController} = require('../controllers/explorersController')
+const { explorerGetController,singlePostGetController } = require('../controllers/explorersController')
 
-
-router.get('/',explorerGetController)
+router.get('/:postId',singlePostGetController);
+router.get('/', explorerGetController)
 
 
 module.exports = router;

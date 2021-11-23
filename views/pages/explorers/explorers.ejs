@@ -101,7 +101,7 @@
                 bookmark.style.cursor = 'pointer';
                 bookmark.addEventListener('click',(e)=>{
                     let target = e.target.parentElement;
-
+                    console.log('working');
                     let headers = new Headers();
                     headers.append('Accept', 'application/JSON')
                     let req = new Request(`/api/bookmarks/${target.dataset.post}`,{
@@ -114,7 +114,7 @@
                     .then(res=> res.json())
                     .then(data=>{
                        if(data.bookmark){
-                        target.innerHTML = ' <i class="fas fa-bookmark"></i>'
+                        target.innerHTML = ' <i class="fas fa-bookmark" ></i>'
                        }else{
                         target.innerHTML = ' <i class="far fa-bookmark"></i>'
                        }

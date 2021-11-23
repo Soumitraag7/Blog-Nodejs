@@ -91,3 +91,99 @@ exports.explorerGetController = async (req, res, next) => {
 
 
 }
+// exports.singlePostGetController = async (req, res, next) => {
+//     let {postId} = req.params;
+//     console.log(postId);
+//     try {
+//         let post = await Post.findOne( {_id:postId} )
+//         .populate({
+//             path:'comments',
+//             populate:{
+//                 path:'user',
+//                 select:'name profilePics'
+//             }
+//         })
+//         .populate({
+//             path:'comments',
+//             populate:{
+//                 path:"replies.user",
+//                 select: 'name profilePics'
+//             }
+//         })
+//         console.log('post:',post);
+//         if(!post){
+//             let error = new Error('404 page not found')
+//             error.status = 404;
+//             throw error
+//         }
+//         let bookmark =[];
+//         if(req.user){
+//             let profile = await Profile.findOne({ user: req.user._id})
+//             if(profile){
+//                 bookmark = profile.bookmark
+//             }
+//         }
+//         res.render('pages/explorers/singlePage',{
+//             title: post.title,
+//             flashMessage: Flash.getMessage(req),
+//             post,
+//             bookmark
+//         })
+//     } catch (error) {
+//         next(error)
+//     }
+// }
+
+
+
+exports.singlePostGetController = async (req, res, next) => {
+//     let postId = req.params.postId
+//    let post,bookmark
+//    res.render('pages/explorers/singlePage',{
+//                 title: 'abc',
+//                 flashMessage: Flash.getMessage(req),
+//                 post,
+//                 bookmark
+//             })
+
+let {postId} = req.params;
+    console.log(postId);
+    try {
+        let post = await Post.findOne( {_id:postId} )
+        .populate({
+            path:'comments',
+            populate:{
+                path:'user',
+                select:'name profilePics'
+            }
+        })
+        .populate({
+            path:'comments',
+            populate:{
+                path:"replies.user",
+                select: 'name profilePics'
+            }
+        })
+        console.log('post:',post);
+        if(!post){
+            let error = new Error('404 page not found')
+            error.status = 404;
+            throw error
+        }
+        let bookmark =[];
+        if(req.user){
+            let profile = await Profile.findOne({ user: req.user._id})
+            if(profile){
+                bookmark = profile.bookmark
+            }
+        }
+        res.render('pages/explorers/singlePage',{
+            title: post.title,
+            flashMessage: Flash.getMessage(req),
+            post,
+            bookmark
+        })
+    } catch (error) {
+        next(error)
+    }
+}
