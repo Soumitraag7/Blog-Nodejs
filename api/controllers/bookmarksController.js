@@ -1,6 +1,5 @@
 const Profile = require('../../models/Profile')
 
-
 exports.bookmarksGetController = async (req, res, next)=>{
     let {postId} = req.params
 
@@ -12,15 +11,18 @@ exports.bookmarksGetController = async (req, res, next)=>{
     let bookmark;
     try {
         let profile = await Profile.findOne({ user: req.user._id })
+        if(!profile){
+          return  res.redirect('/dashboard');
+        }
         if(profile.bookmark.includes(postId)){
-            await Profile.findByIdAndUpdate(
-                {_id: req.user._id},
+            await Profile.findOneAndUpdate(
+                {user: req.user._id},
                 {$pull:{bookmark:postId}}
             )
             bookmark =false
         }else{
-            await Profile.findByIdAndUpdate(
-                {_id: req.user._id},
+            await Profile.findOneAndUpdate(
+                {user: req.user._id},
                 {$push:{bookmark:postId}}
             )
             bookmark = true
