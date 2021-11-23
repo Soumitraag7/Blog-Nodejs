@@ -1,4 +1,5 @@
 const Post = require('../models/Post')
+const Profile = require('../models/Profile')
 const Flash = require('../utils/Flash')
 const moment = require('moment')
 
@@ -47,21 +48,40 @@ exports.explorerGetController = async (req, res, next) => {
     }
 
     try {
-        let  filter  = req.query.filter || 'latest'
-        console.log(filter);
-        let {order,filterObject} = genereteFilterObject(filter.toLowerCase())
-        console.log(filterObject,order);
+        let  filter  = req.query.filter || 'latest';
+        let currentPage = parseInt(req.query.page) || 1;
+        let itemPerPage  = 2;
+
+        let {order,filterObject} = genereteFilterObject(filter.toLowerCase());
+        let bookmarks = [];
+
+        if(req.user){
+            let profile = await Profile.findOne(({user:req.user._id}))
+            if(profile){
+                bookmarks = profile.bookmark;
+            }
+        }
 
         let allPost = await Post.find(filterObject)
         .sort(order === 1? '-createdAt': 'createdAt')
-         .populate('author','name')
+        .populate('author','name')
+        .skip((itemPerPage * currentPage) - itemPerPage)
+        .limit(itemPerPage)
+
+        let totalPost  = await Post.countDocuments();
+        let totalPage = totalPost /itemPerPage;
+
 
          console.log(allPost);
         res.render('pages/explorers/explorers', {
             title: 'Explore All post',
             flashMessage: Flash.getMessage(req),
-            filter: filter ,
-            posts:allPost
+            filter,
+            posts:allPost,
+            itemPerPage,
+            currentPage,
+            totalPage,
+            bookmarks
         })
 
     } catch (error) {
