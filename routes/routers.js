@@ -40,7 +40,7 @@ const routers = [
     ,{
         path:"/",
         handler:(req, res) => {
-            res.send('working')
+            res.redirect('/explorers')
         
         }
     }
