@@ -7,9 +7,9 @@ window.onload = function () {
         reqLikeDislike('likes',postId)
         .then(res =>res.json())
         .then(data=>{
-            let likeText = data.liked ? 'Liked' : 'Like';
+            let likeText = data.liked ? '<i class="fas fa-thumbs-up"></i>' : '<i class="far fa-thumbs-up"></i>';
             likeText+= `(${data.totalLikes})`;
-            let disLikeText = `Dislike (${data.totalDisLikes})` ;
+            let disLikeText = `<i class="far fa-thumbs-down"></i> (${data.totalDisLikes})` ;
             likeBtn.innerHTML = likeText;
             disLikeBtn.innerHTML = disLikeText;
         })
@@ -23,9 +23,9 @@ window.onload = function () {
         reqLikeDislike('dislikes',postId)
         .then(res =>res.json())
         .then(data=>{
-            let disLikeText  = data.disliked ? 'Disliked' : 'disLike';
+            let disLikeText  = data.disliked ? '<i class="fas fa-thumbs-down"></i>' : '<i class="far fa-thumbs-down"></i>';
             disLikeText+= `(${data.totalDisLikes})`;
-            let likeText = `Like (${data.totalLikes})` ;
+            let likeText = `<i class="far  fa-thumbs-up"></i> (${data.totalLikes})` ;
             likeBtn.innerHTML = likeText;
             disLikeBtn.innerHTML = disLikeText;
         })

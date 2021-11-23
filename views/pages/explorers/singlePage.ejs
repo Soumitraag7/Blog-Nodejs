@@ -42,12 +42,21 @@
 
 
                                 <% }else{ %>
-                                    <button class="btn btn-success btn-sm" id="likeBtn" data-post="<%= post._id %> ">
-                                        <%= post.likes.includes(user._id)? 'Liked' : 'Like' %>
+                                    <button style="border:none; background-color: white;" id="likeBtn" data-post="<%= post._id %> ">
+                                        <% if(post.likes.includes(user._id)){ %> 
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <% } else{%>
+                                                <i class="far fa-thumbs-up"></i>
+                                                <% } %>  
+                                     
                                             (<%= post.likes.length %> )
                                     </button>
-                                    <button class="btn btn-danger btn-sm" id="disLikeBtn" data-post="<%= post._id %> ">
-                                        <%= post.dislikes.includes(user._id)? 'Disliked' : 'Dislike' %>
+                                    <button style="border:none; background-color: white;"  id="disLikeBtn" data-post="<%= post._id %> ">
+                                        <% if(post.dislikes.includes(user._id)){ %>
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <% } else{%>
+                                                <i class="far fa-thumbs-down"></i>
+                                                <% } %>   
                                             (<%= post.dislikes.length %> )
                                     </button>
 
