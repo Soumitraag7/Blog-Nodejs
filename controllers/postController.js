@@ -6,7 +6,6 @@ const Profile = require("../models/Profile");
 const Flash = require("../utils/Flash");
 
 exports.getCreatePostController = (req, res, next) => {
-  console.log("working on create post");
   res.render("pages/post/createPost", {
     title: "Create Post",
     flashMessage: Flash.getMessage(req),
@@ -113,9 +112,7 @@ exports.editPostController = async (req, res, next) => {
     if (tags) {
       tags = tags.split(",").map((item) => item.trim());
     }
-    
-    console.log(post.thumbnail);
-    
+        
     let thumbnail = (req.file)? `/uploads/${req.file.filename}` : post.thumbnail;
     
     let editepost = await Post.findOneAndUpdate(
@@ -132,7 +129,6 @@ exports.editPostController = async (req, res, next) => {
       {new:true}
     );
 
-    // console.log(post.thumbnail);
     res.redirect(`/post/edit/${editepost._id}`);
 
   } catch (error) {
@@ -147,13 +143,11 @@ exports.deletGetPostController = async (req, res, next)=>{
   try {
 
     let post  = await Post.findOne({author:req.user._id, _id: postId})
-    console.log(postId);
     if(!post){
       let error = new Error('404 page not found')
       error.status = 404
       throw error
     }
-     console.log(postId);
     await Post.findOneAndDelete({_id:postId})
     await Profile.findOneAndUpdate(
       {user: req.user._id},
@@ -170,10 +164,8 @@ exports.deletGetPostController = async (req, res, next)=>{
 }
 
 exports.postsGetController = async (req, res, next) => {
-  console.log('here');
         try {
           let posts = await Post.find({author: req.user._id}) 
-          console.log(posts);
           res.render('pages/dashboard/posts',{
             title: 'My created post ',
             posts,

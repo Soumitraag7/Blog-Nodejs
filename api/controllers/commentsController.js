@@ -19,16 +19,17 @@ exports.commetsPostController = async (req, res, next)=>{
     })
     try {
         let createComment = await comments.save()
-        await Post.findByIdAndUpdate(
-            {_id:postId},
+        await Post.findOneAndUpdate(
+            {_id:postID},
             {$push: {comments:createComment._id}}
         )
 
-        let commentsJSON = await Comments.findById(createComment._id).populate({
+        let commentsJSON = await Comments.findById({_id:createComment._id}).populate({
             path:'user',
-            select: 'profilePics name'
+            select: 'name profilePics'
         })
-        return res.status(200).json({commentsJSON})
+        console.log('commentsJSON',commentsJSON);
+        return res.status(200).json(commentsJSON)
         
     } catch (error) {
         console.log(error)
@@ -44,8 +45,10 @@ exports.commetsPostController = async (req, res, next)=>{
 
 
 exports.replysCommetsPostController = async (req, res, next)=>{
+    
     let {commentID} = req.params
     let {body} = req.body
+    console.log(body);
 
     if(!req.user){
         return res.status(403).json({

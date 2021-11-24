@@ -14,7 +14,7 @@ const {
 
 const { isAthencated} = require('../../middlewares/authMiddleware')
 
-router.use(isAthencated)
+// router.use(isAthencated)
 
 
 
