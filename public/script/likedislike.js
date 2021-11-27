@@ -16,7 +16,7 @@
         })
         .catch(e=>{
             console.log(e);
-        })
+        })   
     })
 
     disLikeBtn.addEventListener('click',function(e){
