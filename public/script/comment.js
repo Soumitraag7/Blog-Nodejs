@@ -63,7 +63,7 @@ window.onload = function () {
 
 function genretedRequest(url, method, body) {
     let headers = new Headers()
-    headers.append('Accept','apllication/JSON');
+    headers.append('Accept','apllication/json');
     headers.append('Content-Type', 'application/json');
     console.log(body);
     let req = new Request(url, {
@@ -99,12 +99,13 @@ function createReplyElement(reply){
     console.log(reply.user.profilePics);
     let {body} = reply.replies[reply.replies.length-1]
     let text = `
-    <img  scr="${reply.user.profilePics}"
-    class="align-self-staret mr=3 rounded-circle" style="width:40px">
+    <img  src="${reply.user.profilePics}"
+    class="align-self-staret mr-3 rounded-circle" style="width:40px">
     <div class="media-body">
         <p>${body}</p>
     </div>
     `
+   
     let div  = document.createElement('div');
     div.className = 'media mt-3';
     div.innerHTML = text

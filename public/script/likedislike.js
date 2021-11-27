@@ -1,4 +1,5 @@
-window.onload = function () {
+// window.onload = function () {
+    console.log('dfksjdsk');
     let likeBtn = document.getElementById('likeBtn')
     let disLikeBtn = document.getElementById('disLikeBtn')
 
@@ -51,5 +52,5 @@ window.onload = function () {
        
 
     }
-}
+// }
 
