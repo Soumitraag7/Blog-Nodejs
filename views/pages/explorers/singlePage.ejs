@@ -42,7 +42,7 @@
 
 
                                 <% }else{ %>
-                                    <button style="border:none; background-color: white; cursor: pointer;" id="likeBtn" data-post="<%= post._id %> ">
+                                    <button style="border:none; outline: none; background-color: white; cursor: pointer;" id="likeBtn" data-post="<%= post._id %> ">
                                         <% if(post.likes.includes(user._id)){ %> 
                                             <i class="fas fa-thumbs-up"></i>
                                             <% } else{%>
@@ -51,7 +51,7 @@
                                      
                                             (<%= post.likes.length %> )
                                     </button>
-                                    <button style="border:none; background-color: white;cursor: pointer;"  id="disLikeBtn" data-post="<%= post._id %> ">
+                                    <button style="border:none; outline: none; background-color: white;cursor: pointer;"  id="disLikeBtn" data-post="<%= post._id %> ">
                                         <% if(post.dislikes.includes(user._id)){ %>
                                             <i class="fas fa-thumbs-down"></i>
                                             <% } else{%>
