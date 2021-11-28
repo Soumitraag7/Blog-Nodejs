@@ -40,7 +40,6 @@ window.onload = function () {
                     .then(req => req.json())
                     .then(data=>{
                         let replyElement = createReplyElement(data.commentsJSON);
-                        // console.log(data.commentsJSON.replies[data.commentsJSON.replies.length-1]);
                         let parent = e.target.parentElement
                         parent.previousElementSibling.appendChild(replyElement)
                         e.target.value = ''
@@ -63,7 +62,7 @@ window.onload = function () {
 
 function genretedRequest(url, method, body) {
     let headers = new Headers()
-    headers.append('Accept','apllication/json');
+    // headers.append('Accept','apllication/json');
     headers.append('Content-Type', 'application/json');
     console.log(body);
     let req = new Request(url, {
@@ -77,7 +76,6 @@ function genretedRequest(url, method, body) {
 }
 
 function createComment(comment) {
-    console.log(comment.user.profilePics);
     let text = `<img src="${comment.user.profilePics}" class="rounded-circle mx-3 my-3" style="width:40px;">
     <div class="media-body mt-4">
         <p> ${comment.user.name}  </p>
@@ -96,12 +94,13 @@ function createComment(comment) {
 }
 
 function createReplyElement(reply){
-    console.log(reply.user.profilePics);
+    console.log(reply.user.name);
     let {body} = reply.replies[reply.replies.length-1]
     let text = `
     <img  src="${reply.user.profilePics}"
     class="align-self-staret mr-3 rounded-circle" style="width:40px">
-    <div class="media-body">
+    <div class="media-body mt-2">
+        <p>${reply.user.name}</P>
         <p>${body}</p>
     </div>
     `
