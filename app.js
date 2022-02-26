@@ -11,7 +11,7 @@ const setRouter = require('./routes/routers');
 const setMiddleware = require('./middlewares/middleweres')
 
 //databaseURl
-const databaseURl = `mongodb://localhost:${process.env.DB_PORT}/project2012`;
+const databaseURl = `mongodb+srv://LMHasib:LMShsb@cluster0.db2ry.mongodb.net/blog`;
 //  const databaseURl = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASSWORD}@cluster0.wcaoc.mongodb.net/curd?retryWrites=true&w=majority`;
 
 app.set('view engine', 'ejs');

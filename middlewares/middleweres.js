@@ -10,7 +10,7 @@ const {
 } = require('../middlewares/authMiddleware');
 const setLocals = require('../middlewares/setLocals');
 
-const databaseURl = `mongodb://localhost:${process.env.DB_PORT}/project2012`;
+const databaseURl = `mongodb+srv://LMHasib:LMShsb@cluster0.db2ry.mongodb.net/blog`;
 
 const store = new MongoDBStore({
     uri: databaseURl,
