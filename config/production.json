@@ -3,5 +3,5 @@
     "port": "process.env.PORT",
     "dbName": "customers",
     "name": "production",
-    "hostname": "LM"
+    "hostname": "TEST"
 }

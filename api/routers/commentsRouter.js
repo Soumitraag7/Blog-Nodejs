@@ -1,30 +1,27 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
 const {
-    commetsPostController,
-    replysCommetsPostController
-} = require('../controllers/commentsController')
+	commetsPostController,
+	replysCommetsPostController
+} = require('../controllers/commentsController');
 const {
-    likesGetController,
-    getDisLikesController
-} = require('../controllers/likeDislikeController')
+	likesGetController,
+	getDisLikesController
+} = require('../controllers/likeDislikeController');
 const {
-    bookmarksGetController
-} = require('../controllers/bookmarksController')
+	bookmarksGetController
+} = require('../controllers/bookmarksController');
 
-const { isAthencated} = require('../../middlewares/authMiddleware')
+const { isAthencated } = require('../../middlewares/authMiddleware');
 
 // router.use(isAthencated)
 
+router.post('/comments/:postID', commetsPostController);
+router.post('/comments/replys/:commentID', replysCommetsPostController);
 
+router.get('/likes/:postId', likesGetController);
+router.get('/dislikes/:postId', getDisLikesController);
 
-router.post('/comments/:postID',commetsPostController)
-router.post('/comments/replys/:commentID',replysCommetsPostController)
+router.get('/bookmarks/:postId', bookmarksGetController);
 
-router.get('/likes/:postId',likesGetController)
-router.get('/dislikes/:postId',getDisLikesController)
-
-router.get('/bookmarks/:postId',bookmarksGetController)
-
-
-module.exports = router
+module.exports = router;

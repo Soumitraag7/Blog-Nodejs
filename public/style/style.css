@@ -1,231 +1,229 @@
 @import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: 'Viaoda Libre', cursive;
+	font-family: 'Viaoda Libre', cursive;
 }
 
-a,a:hover,a:focus{
-    color: #fff;
-    text-decoration: none;
+a,
+a:hover,
+a:focus {
+	color: #fff;
+	text-decoration: none;
 }
 
 .top-header {
-    background-color: #3a494d;
-    min-height: 100px;
+	background-color: #3a494d;
+	min-height: 100px;
 }
 
-.logo{
-    font-size: 2.5rem;
-    font-style: italic;
-    transition: all linear .3s;
+.logo {
+	font-size: 2.5rem;
+	font-style: italic;
+	transition: all linear 0.3s;
 }
 
 .logo:hover {
-    color: #929292;
+	color: #929292;
 }
 
 .ul-navigation {
-    font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
 .nav-item .nav-link {
-    transition: all linear .3s;
+	transition: all linear 0.3s;
 }
 
 .nav-item .nav-link:hover {
-    color: #929292;
+	color: #929292;
 }
 
 .main-content {
-    margin: 15px 0;
+	margin: 15px 0;
 }
 
-.user-message{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    background: linear-gradient(80deg, #3a494d 0, #2cc185 100%) !important;
-    color: #fff;
-    padding: 155px 30px 40px;
+.user-message {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	background: linear-gradient(80deg, #3a494d 0, #2cc185 100%) !important;
+	color: #fff;
+	padding: 155px 30px 40px;
 }
 
 .splash-message {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    font-size: 2rem;
-    line-height: 1.3;
-    padding-bottom: 155px;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	font-size: 2rem;
+	line-height: 1.3;
+	padding-bottom: 155px;
 }
 
-
 .alternative-message {
-    color: #000;
-    font-style: italic;
+	color: #000;
+	font-style: italic;
 }
 
 .form-message {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 60px 30px 40px;
-    background-color: #363636;
-    color: #d4d4d4;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding: 60px 30px 40px;
+	background-color: #363636;
+	color: #d4d4d4;
 }
 
 .splash-description {
-    color: #fff;
-    font-size: 1.53846rem;
-    font-weight: 300;
-    display: block;
-    margin: 0 auto;
+	color: #fff;
+	font-size: 1.53846rem;
+	font-weight: 300;
+	display: block;
+	margin: 0 auto;
 }
-
 
 .input-group {
-    border-bottom: 2px solid #3f3f3f;
-    padding: 6px 0;
-    position: relative;
-    width: 100%;
-    outline: transparent;
+	border-bottom: 2px solid #3f3f3f;
+	padding: 6px 0;
+	position: relative;
+	width: 100%;
+	outline: transparent;
 }
 
-.input-group-error{
-    border-bottom: 2px solid red;
-    padding: 6px 0;
-    position: relative;
-    width: 100%;
-    outline: transparent;
+.input-group-error {
+	border-bottom: 2px solid red;
+	padding: 6px 0;
+	position: relative;
+	width: 100%;
+	outline: transparent;
 }
-
 
 .input-group-prepend {
-    padding: .6rem .9rem;
-    min-width: 3.847rem;
-    font-size: 1.23rem;
-    margin-right: 0;
+	padding: 0.6rem 0.9rem;
+	min-width: 3.847rem;
+	font-size: 1.23rem;
+	margin-right: 0;
 }
 
 .fas {
-    font-size: 20px;
-    color: #2cc185;
-    padding-top: 1px;
+	font-size: 20px;
+	color: #2cc185;
+	padding-top: 1px;
 }
 
 .form-control,
 .form-control:focus {
-    border: 0;
-    background-color: transparent;
-     -webkit-box-shadow: none;
-    box-shadow: none;
-    color: #e7e7e7;
-    padding: 0;
-    font-size: 1.3rem;
-    font-weight: 500;
-    height: 36px;
+	border: 0;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #e7e7e7;
+	padding: 0;
+	font-size: 1.3rem;
+	font-weight: 500;
+	height: 36px;
 }
 
 .login-submit {
-    padding: 2.4rem 0 2.5rem;
+	padding: 2.4rem 0 2.5rem;
 }
 
 .submit {
-    color: #fff;
-    background-color: #2cc185;
-    border-color: #2cc185;
-    display: block;
-    width: 100%;
+	color: #fff;
+	background-color: #2cc185;
+	border-color: #2cc185;
+	display: block;
+	width: 100%;
 }
 
-
 .check-label {
-    margin-left: 5px;
+	margin-left: 5px;
 }
 
 .login-forgot-password {
-    text-align: right;
+	text-align: right;
 }
 
 .login-forgot-password a {
-    color: #fff;
-    opacity: .8;
+	color: #fff;
+	opacity: 0.8;
 }
 
 .btn-color.btn-facebook {
-    color: #fff;
-    background: linear-gradient(80deg,  #5d82d1 0, #000 100%) !important;
-    /* background-color: #5d82d1; */
-    border-color: #5d82d1;
-    width: 100%;
+	color: #fff;
+	background: linear-gradient(80deg, #5d82d1 0, #000 100%) !important;
+	/* background-color: #5d82d1; */
+	border-color: #5d82d1;
+	width: 100%;
 }
 
 .btn-color.btn-google {
-    color: #fff;
-    background: linear-gradient(80deg,  #0F9D58 0, #DB4437 100%) !important;
-    border-color: #4285F4;
-    width: 100%;
+	color: #fff;
+	background: linear-gradient(80deg, #0f9d58 0, #db4437 100%) !important;
+	border-color: #4285f4;
+	width: 100%;
 }
 
-.title,.conditions {
-    text-align: center;
-    font-size: 1.2rem;
+.title,
+.conditions {
+	text-align: center;
+	font-size: 1.2rem;
 }
 
 .conditions a {
-    color: #4ad69e;
+	color: #4ad69e;
 }
 
 .top-footer {
-    padding: 60px 0;
+	padding: 60px 0;
 }
 
 .copyright {
-    background-color: #000;
-    color: #fff;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	background-color: #000;
+	color: #fff;
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.copyright p{
-    padding-top: 10px;
+.copyright p {
+	padding-top: 10px;
 }
 
-.copyright p a{
-    transition: all linear .3s;
+.copyright p a {
+	transition: all linear 0.3s;
 }
 
 .copyright p a:hover {
-        color: #e68324;
-    }
-.my-container{
-    min-height: 500px;
+	color: #e68324;
+}
+.my-container {
+	min-height: 500px;
 }
 
-.subs label{
-    font-size: 1.4rem;
-    color: #2cc185;
+.subs label {
+	font-size: 1.4rem;
+	color: #2cc185;
 }
-
 
 #subscribe {
-    border-bottom: 2px solid #3f3f3f;
-    padding: 6px 0;
-    font-size: 1.2rem;
-    outline: transparent;
+	border-bottom: 2px solid #3f3f3f;
+	padding: 6px 0;
+	font-size: 1.2rem;
+	outline: transparent;
 }
