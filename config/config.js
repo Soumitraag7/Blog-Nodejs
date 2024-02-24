@@ -1,10 +1,10 @@
 exports.config = {
 	dev: {
-		name: 'LM Hossain',
+		name: 'TEST',
 		server: 'localhost'
 	},
 	prod: {
-		name: 'creative Shaper',
+		name: 'TEST ORG',
 		server: 'real server'
 	}
 };

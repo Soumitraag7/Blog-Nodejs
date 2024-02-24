@@ -1,7 +1,6 @@
 {
-        "name": "TEST",
-        "host": "localhost",
-        "port": "process.env.PORT",
-        "dbName": "customers"
-      
+	"name": "TEST",
+	"host": "localhost",
+	"port": "process.env.PORT",
+	"dbName": "customers"
 }
